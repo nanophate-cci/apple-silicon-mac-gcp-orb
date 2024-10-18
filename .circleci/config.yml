@@ -1,0 +1,17 @@
+version: 2.1
+
+orbs:
+  gcp-cli: circleci/gcp-cli@2.4.1
+
+jobs:
+  build:
+    macos:
+      xcode: 15.3.0
+    resource_class: macos.m1.medium.gen1
+    steps:
+    - checkout
+    - gcp-cli/install:
+        version: 497.0.0
+    - run:
+        command: gcloud version
+        name: gcloud CLI version
